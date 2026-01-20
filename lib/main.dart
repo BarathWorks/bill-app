@@ -15,6 +15,7 @@ import 'features/settings/presentation/bloc/settings_bloc.dart';
 import 'features/billing/presentation/pages/home_page.dart';
 import 'features/records/presentation/pages/records_page.dart';
 import 'features/settings/presentation/pages/settings_page.dart';
+import 'features/splash/splash_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,7 +73,7 @@ class FlowerBillingApp extends StatelessWidget {
         title: AppConstants.appName,
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        home: const MainAppShell(),
+        home: SplashPage(child: const MainAppShell()),
       ),
     );
   }

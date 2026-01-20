@@ -1,0 +1,30 @@
+# Flutter Native Splash Configuration
+flutter_native_splash:
+  # Background color
+  color: "#FFFDF5"
+
+  # Splash image
+  image: assets/images/app_icon.png
+
+  # Branding at bottom
+  branding: assets/images/app_icon.png
+  branding_mode: bottom
+
+  # Color for dark mode
+  color_dark: "#1B5E20"
+
+  # Android specific
+  android: true
+  android_12:
+    color: "#FFFDF5"
+    image: assets/images/app_icon.png
+    color_dark: "#1B5E20"
+
+  # iOS specific
+  ios: true
+
+  # Web specific
+  web: true
+
+  # Full screen
+  fullscreen: true
