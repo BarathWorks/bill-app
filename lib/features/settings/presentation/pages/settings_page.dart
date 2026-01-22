@@ -20,6 +20,7 @@ class _SettingsPageState extends State<SettingsPage> {
   final _ownerNameController = TextEditingController();
   final _phone1Controller = TextEditingController();
   final _phone2Controller = TextEditingController();
+  final _emailController = TextEditingController();
   final _addressController = TextEditingController();
   final _commissionController = TextEditingController();
   String _selectedLanguage = 'ta';
@@ -37,6 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
     _ownerNameController.dispose();
     _phone1Controller.dispose();
     _phone2Controller.dispose();
+    _emailController.dispose();
     _addressController.dispose();
     _commissionController.dispose();
     super.dispose();
@@ -47,6 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
     _ownerNameController.text = settings.ownerName;
     _phone1Controller.text = settings.phone1;
     _phone2Controller.text = settings.phone2;
+    _emailController.text = settings.email;
     _addressController.text = settings.address;
     _commissionController.text = settings.defaultCommission.toString();
     _selectedLanguage = settings.language;
@@ -264,6 +267,14 @@ class _SettingsPageState extends State<SettingsPage> {
             hint: 'Enter alternate phone (optional)',
             icon: Icons.phone_android,
             keyboardType: TextInputType.phone,
+          ),
+          const SizedBox(height: AppConstants.paddingM),
+          _buildTextField(
+            controller: _emailController,
+            label: 'Email / மின்னஞ்சல்',
+            hint: 'Enter business email',
+            icon: Icons.email,
+            maxLines: 1,
           ),
         ],
       ),
@@ -531,6 +542,7 @@ class _SettingsPageState extends State<SettingsPage> {
       ownerName: _ownerNameController.text,
       phone1: _phone1Controller.text,
       phone2: _phone2Controller.text,
+      email: _emailController.text,
       address: _addressController.text,
       defaultCommission: double.tryParse(_commissionController.text) ?? 0.0,
       language: _selectedLanguage,

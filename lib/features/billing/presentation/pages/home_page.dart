@@ -377,6 +377,7 @@ class _HomePageState extends State<HomePage>
 
   Widget _buildEmptyItemsState() {
     return Container(
+      margin: const EdgeInsets.only(top: AppConstants.paddingM),
       padding: const EdgeInsets.all(AppConstants.paddingXL),
       decoration: BoxDecoration(
         color: Colors.grey.shade50,

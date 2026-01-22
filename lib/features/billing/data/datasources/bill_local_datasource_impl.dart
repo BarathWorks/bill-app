@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 import 'bill_local_datasource.dart';
 import '../models/bill_model.dart';
-import '../../../../core/constants/hive_constants.dart';
 import '../../../../core/error/exceptions.dart';
 
 /// Hive implementation of bill local data source

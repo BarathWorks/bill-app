@@ -115,7 +115,8 @@ class _RecordsPageState extends State<RecordsPage> {
           setState(() {
             _isSearching = value.isNotEmpty;
           });
-          // TODO: Implement search functionality
+          // Trigger search
+          context.read<BillingBloc>().add(SearchBillsEvent(value));
         },
         decoration: InputDecoration(
           hintText: 'Search by shop name or area...',
@@ -182,8 +183,10 @@ class _RecordsPageState extends State<RecordsPage> {
           );
         }
 
-        if (state is BillsLoaded) {
-          final bills = state.bills;
+        if (state is BillsLoaded || state is BillsSearchResults) {
+          final bills = state is BillsLoaded
+              ? (state as BillsLoaded).bills
+              : (state as BillsSearchResults).bills;
 
           if (bills.isEmpty) {
             return _buildEmptyState();

@@ -23,16 +23,19 @@ class SettingsModel extends Settings {
   @HiveField(3)
   final String phone2;
 
-  @override
   @HiveField(4)
-  final String address;
+  final String email;
 
   @override
   @HiveField(5)
-  final double defaultCommission;
+  final String address;
 
   @override
   @HiveField(6)
+  final double defaultCommission;
+
+  @override
+  @HiveField(7)
   final String language;
 
   const SettingsModel({
@@ -40,6 +43,7 @@ class SettingsModel extends Settings {
     required this.ownerName,
     required this.phone1,
     required this.phone2,
+    required this.email,
     required this.address,
     required this.defaultCommission,
     required this.language,
@@ -48,6 +52,7 @@ class SettingsModel extends Settings {
           ownerName: ownerName,
           phone1: phone1,
           phone2: phone2,
+          email: email,
           address: address,
           defaultCommission: defaultCommission,
           language: language,
@@ -60,6 +65,7 @@ class SettingsModel extends Settings {
       ownerName: settings.ownerName,
       phone1: settings.phone1,
       phone2: settings.phone2,
+      email: settings.email,
       address: settings.address,
       defaultCommission: settings.defaultCommission,
       language: settings.language,
@@ -73,6 +79,7 @@ class SettingsModel extends Settings {
       ownerName: '',
       phone1: '',
       phone2: '',
+      email: '',
       address: '',
       defaultCommission: 0.0,
       language: 'ta',
@@ -86,6 +93,7 @@ class SettingsModel extends Settings {
       ownerName: ownerName,
       phone1: phone1,
       phone2: phone2,
+      email: email,
       address: address,
       defaultCommission: defaultCommission,
       language: language,
@@ -98,6 +106,7 @@ class SettingsModel extends Settings {
     String? ownerName,
     String? phone1,
     String? phone2,
+    String? email,
     String? address,
     double? defaultCommission,
     String? language,
@@ -107,6 +116,7 @@ class SettingsModel extends Settings {
       ownerName: ownerName ?? this.ownerName,
       phone1: phone1 ?? this.phone1,
       phone2: phone2 ?? this.phone2,
+      email: email ?? this.email,
       address: address ?? this.address,
       defaultCommission: defaultCommission ?? this.defaultCommission,
       language: language ?? this.language,

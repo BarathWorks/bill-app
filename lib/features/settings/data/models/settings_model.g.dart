@@ -21,16 +21,17 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
       ownerName: fields[1] as String,
       phone1: fields[2] as String,
       phone2: fields[3] as String,
-      address: fields[4] as String,
-      defaultCommission: fields[5] as double,
-      language: fields[6] as String,
+      email: fields[4] as String,
+      address: fields[5] as String,
+      defaultCommission: fields[6] as double,
+      language: fields[7] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, SettingsModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.distributorName)
       ..writeByte(1)
@@ -40,10 +41,12 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
       ..writeByte(3)
       ..write(obj.phone2)
       ..writeByte(4)
-      ..write(obj.address)
+      ..write(obj.email)
       ..writeByte(5)
-      ..write(obj.defaultCommission)
+      ..write(obj.address)
       ..writeByte(6)
+      ..write(obj.defaultCommission)
+      ..writeByte(7)
       ..write(obj.language);
   }
 

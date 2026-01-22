@@ -13,6 +13,9 @@ class Settings extends Equatable {
   
   /// Secondary phone number
   final String phone2;
+
+  /// Business email
+  final String email;
   
   /// Business address
   final String address;
@@ -28,6 +31,7 @@ class Settings extends Equatable {
     required this.ownerName,
     required this.phone1,
     required this.phone2,
+    required this.email,
     required this.address,
     required this.defaultCommission,
     required this.language,
@@ -40,6 +44,7 @@ class Settings extends Equatable {
       ownerName: '',
       phone1: '',
       phone2: '',
+      email: '',
       address: '',
       defaultCommission: 0.0,
       language: 'ta', // Default to Tamil
@@ -55,6 +60,7 @@ class Settings extends Equatable {
     String? ownerName,
     String? phone1,
     String? phone2,
+    String? email,
     String? address,
     double? defaultCommission,
     String? language,
@@ -64,6 +70,7 @@ class Settings extends Equatable {
       ownerName: ownerName ?? this.ownerName,
       phone1: phone1 ?? this.phone1,
       phone2: phone2 ?? this.phone2,
+      email: email ?? this.email,
       address: address ?? this.address,
       defaultCommission: defaultCommission ?? this.defaultCommission,
       language: language ?? this.language,

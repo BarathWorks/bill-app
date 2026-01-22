@@ -27,6 +27,7 @@ class BillingBloc extends Bloc<BillingEvent, BillingState> {
     on<LoadAllBillsEvent>(_onLoadAllBills);
     on<DeleteBillEvent>(_onDeleteBill);
     on<ResetBillFormEvent>(_onResetBillForm);
+    on<SearchBillsEvent>(_onSearchBills);
   }
 
   void _onAddBillItem(AddBillItemEvent event, Emitter<BillingState> emit) {
@@ -152,5 +153,36 @@ class BillingBloc extends Bloc<BillingEvent, BillingState> {
 
   void _onResetBillForm(ResetBillFormEvent event, Emitter<BillingState> emit) {
     emit(const BillingInitial());
+  }
+
+  Future<void> _onSearchBills(
+    SearchBillsEvent event,
+    Emitter<BillingState> emit,
+  ) async {
+    final query = event.query.toLowerCase().trim();
+
+    // If query is empty, load all bills
+    if (query.isEmpty) {
+      add(const LoadAllBillsEvent());
+      return;
+    }
+
+    emit(const BillingLoading());
+
+    final result = await getAllBills(const NoParams());
+
+    result.fold(
+      (failure) => emit(BillingError(failure.toString())),
+      (bills) {
+        // Filter bills by shop name or area
+        final filteredBills = bills.where((bill) {
+          final shopNameMatch = bill.shopName.toLowerCase().contains(query);
+          final areaMatch = bill.area.toLowerCase().contains(query);
+          return shopNameMatch || areaMatch;
+        }).toList();
+
+        emit(BillsSearchResults(filteredBills, event.query));
+      },
+    );
   }
 }
